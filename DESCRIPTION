@@ -1,0 +1,22 @@
+Package: SpoonacularAPI
+Type: Package
+Title: R Package for Spoonacular API
+Version: 0.1.0
+Author: person("Cynthia", "Wang", email = "yw3393@columbia.edu",role = c("aut", "cre"))
+Maintainer: Cynthia Wang <yw3393@columbia.edu>
+Description: Allows users to send requests to Spoonacular API through functions in this package and results back in a clean format.
+License: CC0
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    httr,
+    jsonlite,
+    dplyr,
+    tidyr,
+    magrittr,
+    devtools
+RoxygenNote: 7.0.2
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

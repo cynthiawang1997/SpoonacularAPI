@@ -1,0 +1,72 @@
+---
+title: "SpoonacularAPI-vignette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{my-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r, include = FALSE}
+devtools::load_all(".")
+```
+
+This SpoonacularAPI package contains functions that allow users to get information about recipes and menu items that are available on Spoonacular.
+
+## Recipes
+
+* `get_recipe()` gives users the names and ids of the recipes based on the parameters they entered into this function in the form of a dataframe. The description of the parameters is listed in the documentation page.
+
+```{r}
+SpoonacularAPI::get_recipe(key = Sys.getenv("SPOON_KEY"), query = "beef" ,number = 10)
+```
+
+* `get_recipe_information()` takes one or more recipe ids returned by `get_recipe()` and returns the information of the recipes in a dataframe. The output includes instructions, links to the recipes, health scores, cuisines, dish types, etc.
+
+```{r}
+SpoonacularAPI::get_recipe_information(key = Sys.getenv("SPOON_KEY"), recipe_ids = "509163,825127,600427")
+```
+
+
+* `get_recipe_equipment()` takes one recipe id returned by `get_recipe()` and returns the equipment required by the recipe in a dataframe.
+
+```{r}
+SpoonacularAPI::get_recipe_equipment(key = Sys.getenv("SPOON_KEY"), recipe_id = "753644")
+```
+
+
+* `get_recipe_ingredient()` takes one recipe id returned by `get_recipe()` and returns the ingredients required by the recipe and amount of ingredients needed in a dataframe. 
+
+```{r}
+SpoonacularAPI::get_recipe_ingredient(key = Sys.getenv("SPOON_KEY"), recipe_id = "753644")
+```
+
+
+* `get_recipe_nutrition()` takes one recipe id returned by `get_recipe()` and returns the basic nutritional values, bad nutrients, and good nutrients of the recipe in three dataframes. 
+
+```{r}
+SpoonacularAPI::get_recipe_nutrition(key = Sys.getenv("SPOON_KEY"), recipe_id = "753644")
+```
+
+
+## Menu items
+
+* `get_menu()` gives users names and ids of the menu items based on the parameters they entered into this function in the form of a dataframe. The description of the parameters is listed in the documentation page. The output also includes the restaurant chains where the menu items are provided at.
+
+```{r}
+SpoonacularAPI::get_menu(key = Sys.getenv("SPOON_KEY"),query = "burger" ,number = 10)
+```
+
+* `get_menu_info()` takes one menu item id returned by `get_menu()` and returns the basic nutritional values of the menu item in a dataframe.
+
+```{r}
+SpoonacularAPI::get_menu_info(key = Sys.getenv("SPOON_KEY"), item_id = 419357)
+```
+
